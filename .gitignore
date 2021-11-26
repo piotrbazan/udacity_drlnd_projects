@@ -1,2 +1,6 @@
 __pycache__
 Banana_Linux_NoVis
+.idea
+.pytest_cache
+.ipynb_checkpoints 
+.vscode
