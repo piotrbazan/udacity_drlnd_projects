@@ -38,6 +38,7 @@ cd deep-reinforcement-learning/python
 pip install .
 ```
 In case of issues with dependencies like `tensorflow` skip installing them as the project uses `pytorch`
+
 5. Install dependencies from `requirements.txt` file
 6. Install [pytorch](https://pytorch.org/get-started/locally/)
 
