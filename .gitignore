@@ -4,3 +4,4 @@ Banana_Linux_NoVis
 .pytest_cache
 .ipynb_checkpoints 
 .vscode
+unity-environment.log
