@@ -43,5 +43,5 @@ In case of issues with dependencies like `tensorflow` skip installing them as th
 6. Install [pytorch](https://pytorch.org/get-started/locally/)
 
 ### Instructions
-1. Head on to [report notebook](report.ipynb), run experiment training or load trained agent from disk and evaluate it.
-2. The notebook contains DQN/DDQN agents.
+1. Head on to [experiment notebook](experiment.ipynb), run experiment training or load trained agent from disk and evaluate it. The notebook contains DQN/DDQN agents.
+2. Take a look at [report](report.pdf).
