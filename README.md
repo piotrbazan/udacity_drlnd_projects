@@ -35,6 +35,7 @@ git clone https://github.com/udacity/deep-reinforcement-learning.git
 cd deep-reinforcement-learning/python
 ```
 Comment dependencies: `tensorflow, jupyter, pytorch` in the `requirements.txt` file.
+
 5. Issue an install:
 ```
 pip install .
