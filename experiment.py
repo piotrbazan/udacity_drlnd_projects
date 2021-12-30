@@ -31,44 +31,6 @@ class Experiment:
         self.history = pd.DataFrame()
         self.stats_every_episode = stats_every_episode
 
-    def train_parallel(self, episodes, max_t=1000):
-        """
-        train parallel a2c
-        """
-        np.random.seed(self.seed)
-        torch.manual_seed(self.seed)
-        self.env.initialize(train_mode=True)
-        self.agent.initialize(train_mode=True)
-
-        stats, scores = [], deque(maxlen=self.target_episodes)
-        states = self.env.reset()
-        score_per_agent = np.zeros(len(states))
-        episode = 0
-        for i in count():
-            actions = self.agent.get_action(states)
-            next_states, rewards, dones, infos = self.env.step(actions)
-            self.agent.step(states, actions, rewards, next_states, dones)
-            score_per_agent += rewards
-            for i, done in enumerate(dones):
-                if done:
-                    score = score_per_agent[i]
-                    self.env.reset(rank=i)
-                    score_per_agent[i] = 0
-                    stats.append({'episode': episode, 'score': score, 'agent': self.agent.state_dict()})
-                    if episode % self.stats_every_episode == 0:
-                        self.update_history(stats)
-                        self.print_stats()
-                    scores.append(score)
-                    if len(scores) == self.target_episodes and np.mean(scores) >= self.target_points:
-                        min_v, mean_v = min(scores), np.mean(scores)
-                        print(f'Agent passed grading achieving min score:{min_v}, mean score: {mean_v}')
-                        break
-                    episode += 1
-                    if episode > episodes:
-                        break
-                    gc.collect()
-            states = next_states
-        self.update_history(stats)
 
     def train(self, episodes, max_t=1000):
         random.seed(self.seed)
